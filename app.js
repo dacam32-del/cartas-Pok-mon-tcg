@@ -4,6 +4,8 @@
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const norm = s => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
+  const VARIANTES = { normal: "Normal", holofoil: "Holo", reverseHolofoil: "Reverse Holo", "1stEditionHolofoil": "1ª Edición Holo", "1stEditionNormal": "1ª Edición", unlimitedHolofoil: "Holo (Unlimited)" };
+  const variante = v => v ? (VARIANTES[v] || v) : "";
   const grid = document.getElementById("grid");
   const search = document.getElementById("search");
   const sort = document.getElementById("sort");
@@ -32,6 +34,7 @@
         <div class="tags">
           <span class="tag estado">Estado: ${esc(c.estado)}</span>
           <span class="tag rareza">${esc(c.rareza)}</span>
+          ${c.variante ? `<span class="tag variante">${esc(variante(c.variante))}</span>` : ""}
           ${cant}
         </div>
         <dl>
@@ -39,6 +42,7 @@
           <dt>Número</dt><dd>${esc(c.numero)}</dd>
           <dt>Año</dt><dd>${esc(c.anio)}</dd>
           <dt>Tipo</dt><dd>${esc(c.categoria)} · ${esc(c.tipo)}</dd>
+          ${c.variante ? `<dt>Variante</dt><dd>${esc(variante(c.variante))}</dd>` : ""}
           <dt>Idioma</dt><dd>${esc(c.idioma)}</dd>
           <dt>Ilustrador</dt><dd>${esc(c.ilustrador)}</dd>
           ${c.regulacion ? `<dt>Regulación</dt><dd>${esc(c.regulacion)}</dd>` : ""}
@@ -57,7 +61,7 @@
   function render() {
     const q = norm(search.value.trim());
     const list = data.cartas
-      .filter(c => !q || norm([c.nombre, c.nombre_en, c.set, c.codigo_set, c.numero, c.anio, c.rareza, c.ilustrador, c.idioma, c.categoria, c.tipo, c.nota].join(" ")).includes(q))
+      .filter(c => !q || norm([c.nombre, c.nombre_en, c.set, c.codigo_set, c.numero, c.anio, c.rareza, c.ilustrador, c.idioma, c.categoria, c.tipo, c.nota, variante(c.variante)].join(" ")).includes(q))
       .sort(sorters[sort.value]);
     grid.innerHTML = list.map(cardHTML).join("");
     empty.hidden = list.length > 0;
