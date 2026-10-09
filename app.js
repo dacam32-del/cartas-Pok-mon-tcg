@@ -1,5 +1,5 @@
 (function () {
-  const clp = n => n == null ? "–" : "$" + Math.round(n).toLocaleString("es-CL");
+  const clp = n => n == null ? "–" : "$" + Number(n).toLocaleString("es-CL", { maximumFractionDigits: 2 });
   const usd = n => n == null ? "" : "US$" + Number(n).toLocaleString("es-CL", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const norm = s => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -23,7 +23,7 @@
     const img = c.imagen
       ? `<img src="${esc(c.imagen)}" alt="${esc(c.nombre)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'noimg',textContent:'Sin imagen'}))">`
       : `<span class="noimg">Sin imagen</span>`;
-    const cant = (c.cantidad || 1) > 1 ? `<span class="tag">×${c.cantidad}</span>` : "";
+    const cant = `<span class="tag stock">Stock: ${c.cantidad ?? 1}</span>`;
     return `<article class="card">
       <div class="card-img">${img}</div>
       <div class="card-body">
@@ -41,11 +41,13 @@
           <dt>Tipo</dt><dd>${esc(c.categoria)} · ${esc(c.tipo)}</dd>
           <dt>Idioma</dt><dd>${esc(c.idioma)}</dd>
           <dt>Ilustrador</dt><dd>${esc(c.ilustrador)}</dd>
+          ${c.regulacion ? `<dt>Regulación</dt><dd>${esc(c.regulacion)}</dd>` : ""}
+          <dt>Stock</dt><dd><strong>${c.cantidad ?? 1}</strong></dd>
         </dl>
         ${c.nota ? `<p class="nota">${esc(c.nota)}</p>` : ""}
         <div class="precios">
-          <div class="precio"><small>Mercado</small><strong>${clp(c.precio_mercado_clp)}</strong><div class="usd">${usd(c.precio_mercado_usd)}</div></div>
-          <div class="precio sug"><small>Sugerido</small><strong>${clp(c.precio_sugerido_clp)}</strong></div>
+          <div class="precio"><small>Mercado</small><strong>${clp(c.precio_mercado_clp)}</strong><div class="usd">${usd(c.precio_mercado_usd)}${c.dolar_clp ? ` · dólar ${clp(c.dolar_clp)}` : ""}</div></div>
+          <div class="precio sug"><small>Sugerido</small><strong>${clp(c.precio_sugerido_clp)}</strong>${(c.cantidad ?? 1) > 1 ? `<div class="usd">×${c.cantidad} = ${clp(c.precio_sugerido_clp * c.cantidad)}</div>` : ""}</div>
         </div>
         ${c.fuente ? `<a class="fuente" href="${esc(c.fuente)}" target="_blank" rel="noopener">Ver precio en TCGplayer ↗</a>` : ""}
       </div>
@@ -55,15 +57,16 @@
   function render() {
     const q = norm(search.value.trim());
     const list = data.cartas
-      .filter(c => !q || norm([c.nombre, c.nombre_en, c.set, c.codigo_set, c.numero, c.anio, c.rareza, c.ilustrador, c.idioma, c.categoria, c.tipo].join(" ")).includes(q))
+      .filter(c => !q || norm([c.nombre, c.nombre_en, c.set, c.codigo_set, c.numero, c.anio, c.rareza, c.ilustrador, c.idioma, c.categoria, c.tipo, c.nota].join(" ")).includes(q))
       .sort(sorters[sort.value]);
     grid.innerHTML = list.map(cardHTML).join("");
     empty.hidden = list.length > 0;
   }
 
   function stats() {
-    const cs = data.cartas, n = c => c.cantidad || 1;
+    const cs = data.cartas, n = c => c.cantidad ?? 1;
     document.getElementById("stat-count").textContent = cs.reduce((s, c) => s + n(c), 0);
+    document.getElementById("stat-distinct").textContent = `${cs.length} distintas`;
     document.getElementById("stat-market").textContent = clp(cs.reduce((s, c) => s + (c.precio_mercado_clp || 0) * n(c), 0));
     document.getElementById("stat-suggested").textContent = clp(cs.reduce((s, c) => s + (c.precio_sugerido_clp || 0) * n(c), 0));
     const f = data.actualizado ? new Date(data.actualizado + "T12:00:00").toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" }) : "";
