@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Colección Pokémon TCG de David</title>
+  <meta name="description" content="Catálogo de cartas Pokémon TCG de David con precios aproximados en CLP.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="pokeball" aria-hidden="true"></div>
+      <div>
+        <h1>Mi Colección Pokémon TCG</h1>
+        <p class="sub">Catálogo y precios aproximados en pesos chilenos</p>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><span id="stat-count">–</span><small>cartas</small></div>
+      <div class="stat"><span id="stat-market">–</span><small>valor mercado</small></div>
+      <div class="stat"><span id="stat-suggested">–</span><small>valor sugerido</small></div>
+    </div>
+  </header>
+
+  <section class="controls">
+    <input id="search" type="search" placeholder="Buscar por nombre, set, ilustrador…" aria-label="Buscar cartas">
+    <select id="sort" aria-label="Ordenar">
+      <option value="precio-desc">Precio: mayor a menor</option>
+      <option value="precio-asc">Precio: menor a mayor</option>
+      <option value="anio-desc">Año: más nuevo</option>
+      <option value="anio-asc">Año: más antiguo</option>
+      <option value="nombre-asc">Nombre: A → Z</option>
+      <option value="set-asc">Set: A → Z</option>
+    </select>
+  </section>
+
+  <main>
+    <p id="empty" class="empty" hidden>No se encontraron cartas.</p>
+    <div id="grid" class="grid"></div>
+  </main>
+
+  <footer>
+    <p id="footer-info"></p>
+    <p>Precios de referencia según TCGplayer (estado NM) convertidos a CLP. El valor real depende del estado de cada carta.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
