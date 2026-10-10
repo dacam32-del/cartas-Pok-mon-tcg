@@ -10,7 +10,20 @@
   const search = document.getElementById("search");
   const sort = document.getElementById("sort");
   const empty = document.getElementById("empty");
+  const langBox = document.getElementById("idiomas");
   let data = { cartas: [] };
+  let idiomaSel = "";
+  const idiomaKey = c => norm(String(c.idioma ?? "").trim()) || "sin-idioma";
+  const idiomaLabel = c => { const t = String(c.idioma ?? "").trim(); return t ? t.charAt(0).toUpperCase() + t.slice(1) : "Sin idioma"; };
+
+  function buildIdiomas() {
+    const m = new Map();
+    data.cartas.forEach(c => { const k = idiomaKey(c); if (!m.has(k)) m.set(k, { label: idiomaLabel(c), n: 0 }); m.get(k).n += 1; });
+    const orden = ["espanol", "ingles"];
+    const keys = [...m.keys()].sort((a, b) => (orden.indexOf(a) + 1 || 99) - (orden.indexOf(b) + 1 || 99) || a.localeCompare(b));
+    langBox.innerHTML = [`<button type="button" class="chip" data-idioma="" aria-pressed="true">Todos <span>${data.cartas.length}</span></button>`]
+      .concat(keys.map(k => `<button type="button" class="chip" data-idioma="${esc(k)}" aria-pressed="false">${esc(m.get(k).label)} <span>${m.get(k).n}</span></button>`)).join("");
+  }
 
   const sorters = {
     "precio-desc": (a, b) => (b.precio_mercado_clp || 0) - (a.precio_mercado_clp || 0),
@@ -32,6 +45,7 @@
         <h2>${esc(c.nombre)}</h2>
         ${c.nombre_en && c.nombre_en !== c.nombre ? `<p class="en">${esc(c.nombre_en)}</p>` : ""}
         <div class="tags">
+          <span class="tag idioma">${esc(idiomaLabel(c))}</span>
           <span class="tag estado">Estado: ${esc(c.estado)}</span>
           <span class="tag rareza">${esc(c.rareza)}</span>
           ${c.variante ? `<span class="tag variante">${esc(variante(c.variante))}</span>` : ""}
@@ -61,27 +75,35 @@
   function render() {
     const q = norm(search.value.trim());
     const list = data.cartas
+      .filter(c => !idiomaSel || idiomaKey(c) === idiomaSel)
       .filter(c => !q || norm([c.nombre, c.nombre_en, c.set, c.codigo_set, c.numero, c.anio, c.rareza, c.ilustrador, c.idioma, c.categoria, c.tipo, c.nota, variante(c.variante)].join(" ")).includes(q))
       .sort(sorters[sort.value]);
     grid.innerHTML = list.map(cardHTML).join("");
     empty.hidden = list.length > 0;
+    stats(list);
   }
 
-  function stats() {
-    const cs = data.cartas, n = c => c.cantidad ?? 1;
+  function stats(cs) {
+    const n = c => c.cantidad ?? 1, filtrado = cs.length !== data.cartas.length;
     document.getElementById("stat-count").textContent = cs.reduce((s, c) => s + n(c), 0);
-    document.getElementById("stat-distinct").textContent = `${cs.length} distintas`;
+    document.getElementById("stat-distinct").textContent = filtrado ? `${cs.length} de ${data.cartas.length} distintas (filtro)` : `${cs.length} distintas`;
     document.getElementById("stat-market").textContent = clp(cs.reduce((s, c) => s + (c.precio_mercado_clp || 0) * n(c), 0));
     document.getElementById("stat-suggested").textContent = clp(cs.reduce((s, c) => s + (c.precio_sugerido_clp || 0) * n(c), 0));
     const f = data.actualizado ? new Date(data.actualizado + "T12:00:00").toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" }) : "";
     document.getElementById("footer-info").textContent = `Actualizado: ${f}${data.dolar_clp ? ` · Dólar: ${clp(data.dolar_clp)} CLP` : ""}`;
   }
 
-  fetch("cartas.json", { cache: "no-store" })
+  fetch("cartas.json?v=" + Date.now(), { cache: "no-store" })
     .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(d => { data = d; stats(); render(); })
+    .then(d => { data = d; buildIdiomas(); render(); })
     .catch(() => { empty.hidden = false; empty.textContent = "No se pudo cargar cartas.json."; });
 
   search.addEventListener("input", render);
   sort.addEventListener("change", render);
+  langBox.addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    idiomaSel = b.dataset.idioma;
+    langBox.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    render();
+  });
 })();
