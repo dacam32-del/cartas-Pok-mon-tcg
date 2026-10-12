@@ -6,6 +6,9 @@
 
   const VARIANTES = { normal: "Normal", holofoil: "Holo", reverseHolofoil: "Reverse Holo", "1stEditionHolofoil": "1ª Edición Holo", "1stEditionNormal": "1ª Edición", unlimitedHolofoil: "Holo (Unlimited)" };
   const variante = v => v ? (VARIANTES[v] || v) : "";
+  const WA = "56956592453";
+  const WA_ICO = `<svg viewBox="0 0 32 32" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.5.7 4.8 1.9 6.8L3 29l6.8-2.1c1.9 1 4 1.6 6.2 1.6 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.2c-2 0-3.9-.6-5.5-1.6l-.4-.2-4 1.2 1.3-3.9-.3-.4a10.4 10.4 0 1 1 8.9 4.9zm5.7-7.8c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.5 8.5 0 0 1-4.2-3.7c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1.1 2.5 5.9 5.9 0 0 0 1.2 3.1c.2.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.8-.7 2-1.4s.3-1.3.2-1.4-.3-.2-.6-.3z"/></svg>`;
+  const waURL = c => `https://wa.me/${WA}?text=` + encodeURIComponent(`Hola, me interesa la carta ${c.nombre} (${c.set} ${c.numero}, ${c.idioma}) a ${clp(c.precio_sugerido_clp)} CLP`);
   const grid = document.getElementById("grid");
   const search = document.getElementById("search");
   const sort = document.getElementById("sort");
@@ -67,6 +70,7 @@
           <div class="precio"><small>Mercado</small><strong>${clp(c.precio_mercado_clp)}</strong><div class="usd">${usd(c.precio_mercado_usd)}${c.dolar_clp ? ` · dólar ${clp(c.dolar_clp)}` : ""}</div></div>
           <div class="precio sug"><small>Sugerido</small><strong>${clp(c.precio_sugerido_clp)}</strong>${(c.cantidad ?? 1) > 1 ? `<div class="usd">×${c.cantidad} = ${clp(c.precio_sugerido_clp * c.cantidad)}</div>` : ""}</div>
         </div>
+        <a class="wa-btn wa-card" href="${esc(waURL(c))}" target="_blank" rel="noopener">${WA_ICO}<span>Comprar por WhatsApp</span></a>
         ${c.fuente ? `<a class="fuente" href="${esc(c.fuente)}" target="_blank" rel="noopener">Ver precio en TCGplayer ↗</a>` : ""}
       </div>
     </article>`;
