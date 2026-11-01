@@ -2,7 +2,7 @@
   "dueno": "David Eduardo",
   "actualizado": "2026-11-01",
   "dolar_clp": 984.09,
-  "nota_dolar": "Dólar observado ~984,09 CLP (cartas 483-1804); cartas 1805-1806: 993,22 CLP",
+  "nota_dolar": "Dólar observado ~984,09 CLP (cartas 483-1804); cartas 1805-1807: 993,22 CLP",
   "reglas_precio": "Mercado = TCGplayer NM en USD convertido a CLP con el dólar del día. Sugerido = ~1,3× mercado, con piso de $500 CLP.",
   "cartas": [
     {
@@ -57586,6 +57586,38 @@
       "confianza": "media",
       "confianza_precio": "media",
       "foto": "ct",
+      "api_id": null
+    },
+    {
+      "id": 1807,
+      "nombre": "Scraggy",
+      "nombre_en": "Scraggy",
+      "set": "30th Celebration",
+      "codigo_set": "30C",
+      "numero": "140/128",
+      "anio": 2026,
+      "categoria": "Pokémon",
+      "tipo": "Básico · Oscuro · 80 PS",
+      "rareza": "Ilustración Rara (IR), secreta 140/128 (estrella dorada), holo",
+      "variante": "holofoil",
+      "idioma": "Inglés",
+      "ilustrador": "GOSSAN",
+      "regulacion": null,
+      "estado": "NM/LP",
+      "cantidad": 1,
+      "precio_mercado_usd": 1.28,
+      "precio_mercado_clp": 1271,
+      "precio_sugerido_clp": 1700,
+      "dolar_clp": 993.22,
+      "fuente": "https://www.tcgplayer.com/product/716225",
+      "fuente_detalle": "tcgplayer.com/product/716225 Foil NM market (mpapi, 1 nov 2026)",
+      "fecha_precio": "2026-11-01",
+      "fecha_alta": "2026-11-01",
+      "nota": "Dólar observado 993,22 CLP (mindicador.cl, 30 oct 2026). Ilustración Rara a carta completa con logo 30 aniversario. Set nuevo (sep 2026): precio aún volátil",
+      "imagen": "https://tcgplayer-cdn.tcgplayer.com/product/716225_in_1000x1000.jpg",
+      "confianza": "alta",
+      "confianza_precio": "media",
+      "foto": "cu",
       "api_id": null
     }
   ]
