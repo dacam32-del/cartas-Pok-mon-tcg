@@ -4,6 +4,9 @@ Catálogo de mis cartas coleccionables de Pokémon, con set, número, año, rare
 
 **Ver la página:** https://dacam32-del.github.io/cartas-Pok-mon-tcg/
 
+## 🛒 Tienda web
+**[https://dacam32-del.github.io/cartas-Pok-mon-tcg/](https://dacam32-del.github.io/cartas-Pok-mon-tcg/)**
+
 ## Cómo funciona
 - `cartas.json` es la única fuente de datos: cada carta es un objeto dentro de `"cartas"`.
 - `index.html`, `style.css` y `app.js` leen ese archivo y muestran la grilla (con búsqueda y orden por precio, año, nombre o set).
