@@ -1,8 +1,8 @@
 {
   "dueno": "David Eduardo",
-  "actualizado": "2026-10-23",
+  "actualizado": "2026-11-01",
   "dolar_clp": 984.09,
-  "nota_dolar": "Dólar observado ~984,09 CLP (cartas 483-1785)",
+  "nota_dolar": "Dólar observado ~984,09 CLP (cartas 483-1786)",
   "reglas_precio": "Mercado = TCGplayer NM en USD convertido a CLP con el dólar del día. Sugerido = ~1,3× mercado, con piso de $500 CLP.",
   "cartas": [
     {
@@ -56915,6 +56915,38 @@
       "confianza_precio": "alta",
       "foto": "ck",
       "api_id": "sve-7"
+    },
+    {
+      "id": 1786,
+      "nombre": "Charmander",
+      "nombre_en": "Charmander",
+      "set": "Detective Pikachu",
+      "codigo_set": "DET",
+      "numero": "004/018",
+      "anio": 2019,
+      "categoria": "Pokémon",
+      "tipo": "Básico · Fuego · 60 PS",
+      "rareza": "Común, holo (set Detective Pikachu, todas holo)",
+      "variante": "holofoil",
+      "idioma": "Inglés",
+      "ilustrador": "MPC Film",
+      "regulacion": null,
+      "estado": "NM/LP",
+      "cantidad": 1,
+      "precio_mercado_usd": 0.69,
+      "precio_mercado_clp": 679,
+      "precio_sugerido_clp": 900,
+      "dolar_clp": 984.09,
+      "fuente": "https://www.tcgplayer.com/product/186005",
+      "fuente_detalle": "TCGplayer vía api.pokemontcg.io (det1-4, holofoil)",
+      "fecha_precio": "2026-11-01",
+      "fecha_alta": "2026-11-01",
+      "nota": "Arte holo (todas las cartas del set Detective Pikachu son holo). holo confirmed by David",
+      "imagen": "https://images.pokemontcg.io/det1/4_hires.png",
+      "confianza": "alta",
+      "confianza_precio": "alta",
+      "foto": "cl #1",
+      "api_id": "det1-4"
     }
   ]
 }
