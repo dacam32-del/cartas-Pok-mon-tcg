@@ -2,7 +2,7 @@
   "dueno": "David Eduardo",
   "actualizado": "2026-11-04",
   "dolar_clp": 984.09,
-  "nota_dolar": "Dólar observado ~984,09 CLP (cartas 483-1804); cartas 1805-1807: 993,22 CLP; 1808-1810: 978,11 CLP",
+  "nota_dolar": "Dólar observado ~984,09 CLP (cartas 483-1804); cartas 1805-1807: 993,22 CLP; 1808-1811: 978,11 CLP",
   "reglas_precio": "Mercado = TCGplayer NM en USD convertido a CLP con el dólar del día. Sugerido = ~1,3× mercado, con piso de $500 CLP.",
   "cartas": [
     {
@@ -57715,6 +57715,38 @@
       "confianza_precio": "alta",
       "foto": "cw",
       "api_id": null
+    },
+    {
+      "id": 1811,
+      "nombre": "Regieleki V",
+      "nombre_en": "Regieleki V",
+      "set": "Silver Tempest",
+      "codigo_set": "SIT",
+      "numero": "057/195",
+      "anio": 2022,
+      "categoria": "Pokémon",
+      "tipo": "Básico · V · Eléctrico · 200 PS",
+      "rareza": "Rara Holo V",
+      "variante": "holofoil",
+      "idioma": "Español",
+      "ilustrador": "Eske Yoshinob",
+      "regulacion": "F",
+      "estado": "NM/LP",
+      "cantidad": 2,
+      "precio_mercado_usd": 0.79,
+      "precio_mercado_clp": 773,
+      "precio_sugerido_clp": 1000,
+      "dolar_clp": 978.11,
+      "fuente": "https://www.tcgplayer.com/product/451713",
+      "fuente_detalle": "tcgplayer.com/product/451713 Foil NM market (mpapi, 4 nov 2026)",
+      "fecha_precio": "2026-11-04",
+      "fecha_alta": "2026-11-04",
+      "nota": "Carta en español; precio de referencia: versión inglesa NM en TCGplayer. Dólar 978,11 CLP (exchangerate-api, 4 nov 2026)",
+      "imagen": "https://images.pokemontcg.io/swsh12/57_hires.png",
+      "confianza": "alta",
+      "confianza_precio": "alta",
+      "foto": "cx",
+      "api_id": "swsh12-57"
     }
   ]
 }
