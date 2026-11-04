@@ -2,7 +2,7 @@
   "dueno": "David Eduardo",
   "actualizado": "2026-11-04",
   "dolar_clp": 984.09,
-  "nota_dolar": "Dólar observado ~984,09 CLP (cartas 483-1804); cartas 1805-1807: 993,22 CLP; 1808-1809: 978,11 CLP",
+  "nota_dolar": "Dólar observado ~984,09 CLP (cartas 483-1804); cartas 1805-1807: 993,22 CLP; 1808-1810: 978,11 CLP",
   "reglas_precio": "Mercado = TCGplayer NM en USD convertido a CLP con el dólar del día. Sugerido = ~1,3× mercado, con piso de $500 CLP.",
   "cartas": [
     {
@@ -57683,6 +57683,38 @@
       "confianza_precio": "alta",
       "foto": "cv",
       "api_id": "swsh12-58"
+    },
+    {
+      "id": 1810,
+      "nombre": "Pikachu VMAX",
+      "nombre_en": "Pikachu VMAX",
+      "set": "VMAX Climax — Japón",
+      "codigo_set": "s8b",
+      "numero": "046/184",
+      "anio": 2021,
+      "categoria": "Pokémon",
+      "tipo": "VMAX · Eléctrico · 310 PS",
+      "rareza": "RRR (VMAX), holo",
+      "variante": "holofoil",
+      "idioma": "Japonés",
+      "ilustrador": "aky CG Works",
+      "regulacion": "E",
+      "estado": "NM/LP",
+      "cantidad": 1,
+      "precio_mercado_usd": 6.51,
+      "precio_mercado_clp": 6367,
+      "precio_sugerido_clp": 8300,
+      "dolar_clp": 978.11,
+      "fuente": "https://www.tcgplayer.com/product/571299",
+      "fuente_detalle": "tcgplayer.com/product/571299 Foil NM market, listado japonés (mpapi, 4 nov 2026)",
+      "fecha_precio": "2026-11-04",
+      "fecha_alta": "2026-11-04",
+      "nota": "Carta japonesa; precio del listado japonés de TCGplayer (S8b 046/184). Dólar 978,11 CLP (exchangerate-api, 4 nov 2026)",
+      "imagen": "https://tcgplayer-cdn.tcgplayer.com/product/571299_in_1000x1000.jpg",
+      "confianza": "alta",
+      "confianza_precio": "alta",
+      "foto": "cw",
+      "api_id": null
     }
   ]
 }
