@@ -2,7 +2,7 @@
   "dueno": "David Eduardo",
   "actualizado": "2026-11-15",
   "dolar_clp": 984.09,
-  "nota_dolar": "Dólar observado ~984,09 CLP (cartas 483-1804); cartas 1805-1807: 993,22 CLP; 1808-1826: 978,11 CLP; 1827-1872: 992,48 CLP",
+  "nota_dolar": "Dólar observado ~984,09 CLP (cartas 483-1804); cartas 1805-1807: 993,22 CLP; 1808-1826: 978,11 CLP; 1827-1873: 992,48 CLP",
   "reglas_precio": "Mercado = TCGplayer NM en USD convertido a CLP con el dólar del día. Sugerido = ~1,3× mercado, con piso de $500 CLP.",
   "cartas": [
     {
@@ -59699,6 +59699,38 @@
       "confianza_precio": "alta",
       "foto": "dm",
       "api_id": null
+    },
+    {
+      "id": 1873,
+      "nombre": "Growlithe",
+      "nombre_en": "Growlithe",
+      "set": "McDonald's Collection 2022 (Match Battle)",
+      "codigo_set": "MCD22",
+      "numero": "4/15",
+      "anio": 2022,
+      "categoria": "Pokémon",
+      "tipo": "Básico · Fuego · 80 PS",
+      "rareza": "Promo McDonald's (holo)",
+      "variante": "holo",
+      "idioma": "Español",
+      "ilustrador": "Narumi Sato",
+      "regulacion": null,
+      "estado": "LP (desgaste en esquinas y bordes, según foto)",
+      "cantidad": 1,
+      "precio_mercado_usd": 1.73,
+      "precio_mercado_clp": 1400,
+      "precio_sugerido_clp": 1800,
+      "dolar_clp": 992.48,
+      "fuente": "https://www.tcgplayer.com/product/281503",
+      "fuente_detalle": "tcgplayer.com/product/281503 Foil NM market (mpapi, 15 nov 2026); mercado CLP al 80% por LP",
+      "fecha_precio": "2026-11-15",
+      "fecha_alta": "2026-11-15",
+      "nota": "Carta en español; precio de referencia: versión inglesa NM holo en TCGplayer. Dólar observado 992,48 CLP (mindicador.cl, último valor oficial, viernes 13 nov 2026; no hay publicación el 14 ni el 15 por ser fin de semana). Promo McDonald's 2022 (Match Battle) 4/15. Precio ajustado a ~80% del TCGplayer NM (US$1,73 = $1.717 CLP) por condición LP (desgaste en esquinas y bordes, según foto). holo según foto, confirmar. Distinta de Growlithe #58 en inglés.",
+      "imagen": "https://images.pokemontcg.io/mcd22/4_hires.png",
+      "confianza": "media",
+      "confianza_precio": "media",
+      "foto": "dn",
+      "api_id": "mcd22-4"
     }
   ]
 }
